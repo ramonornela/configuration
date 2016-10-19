@@ -1,0 +1,56 @@
+{
+  "name": "@ramonornela/configuration",
+  "version": "0.0.1",
+  "description": "Configuração do Projeto em geral",
+  "main": "es2015/index.js",
+  "module": "es2015/index.js",
+  "typings": "es2015/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "lint": "tslint -c ./tslint.json --project ./tsconfig-es2015.json --force",
+    "preparePackage": "node ./scripts/copy-package",
+    "build-cjs": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig.json",
+    "build:es2015": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-es2015.json",
+    "build": "npm run clean && npm run build-cjs && npm run build:es2015 && npm run preparePackage",
+    "publishPackage": "npm run lint && npm run build && cd dist && npm publish --access public"
+  },
+  "dependencies": {
+    "@angular/core": "^2.0.1",
+    "@angular/http": "^2.0.1",
+  },
+  "devDependencies": {
+    "@angular/compiler": "^2.0.1",
+    "@angular/compiler-cli": "0.6.2",
+    "rxjs": "5.0.0-beta.12",
+    "zone.js": "^0.6.21",
+    "typescript": "^2.0.3",
+    "tslint": "3.15.1",
+    "tslint-eslint-rules": "1.5.0",
+    "tslint-ionic-rules": "0.0.5"
+  },
+  "peerDependencies": {
+    "@angular/core": "^2.0.1",
+    "@angular/http": "^2.0.1",
+    "rxjs": "5.0.0-beta.12",
+    "zone.js": "^0.6.21"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramonornela/configuration.git"
+  },
+  "keywords": [
+    "ionic",
+    "angular",
+    "url",
+    "http",
+    "headers",
+    "get",
+    "post"
+  ],
+  "author": "Ramon Ornelas <ramon.ornela@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ramonornela/configuration/issues"
+  },
+  "homepage": "https://github.com/ramonornela/configuration"
+}
