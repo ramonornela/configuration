@@ -12,7 +12,7 @@ export function jsonFactory(config: string, xhr: BrowserXhr): Json {
   return new Json(config, xhr);
 }
 
-export function loaderFactory(config: any, xhr: BrowserXhr) {  
+export function loaderFactory(config: any, xhr: BrowserXhr) {
 
   switch (true) {
     case typeof config === 'Object':

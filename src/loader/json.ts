@@ -4,14 +4,14 @@ import { ConfigBase } from '../config-base';
 export class Json extends ConfigBase {
 
   constructor(file: string, xhr: BrowserXhr) {
-  	super();
-  	this.setData(this.load(file, xhr));
+    super();
+    this.setData(this.load(file, xhr));
   }
 
   load(file: string, xhr: BrowserXhr): any {
-  	let data: any;
-  	
+    let data: any;
     let _xhr = xhr.build();
+
     _xhr.open('GET', file, false);
     _xhr.reponseType = 'json';
     _xhr.addEventListener('load', () => {
