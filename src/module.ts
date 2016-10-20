@@ -15,7 +15,7 @@ export function jsonFactory(config: string, xhr: BrowserXhr): Json {
 export function loaderFactory(config: any, xhr: BrowserXhr) {
 
   switch (true) {
-    case typeof config === 'Object':
+    case typeof config === 'object':
       return dataFactory(config);
     case typeof config === 'string':
       return jsonFactory(config, xhr);
