@@ -12,8 +12,8 @@
     "build:cjs": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig.json",
     "build:es2015": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-es2015.json",
     "build": "npm run clean && npm run build:cjs && npm run build:es2015 && npm run preparePackage",
-    "del:ngfactory:dist": "rimraf ./dist/es**/*ngfactory*",
-    "publishPackage": "npm run lint && npm run build && npm run del:ngfactory:dist && npm publish --access public"
+    "delete:ngc:files": "rimraf ./**/es*/*ngfactory && rimraf ./**/es*/*.metadata.json",
+    "publishPackage": "npm run lint && npm run build && npm run delete:ngc:files && npm publish --access public"
   },
   "files": [
     "dist/",
