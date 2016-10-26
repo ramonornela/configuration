@@ -14,11 +14,11 @@
     ]
   },
   "include": [
-    "src/**/*"
+    "src/index.ts"
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
-    "genDir": "./dist/umd",
+    "genDir": "dist/umd",
     "skipTemplateCodegen": true,
     "debug": false
   }
