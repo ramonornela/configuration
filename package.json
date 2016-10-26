@@ -1,6 +1,6 @@
 {
   "name": "@ramonornela/configuration",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Gerenciamento de configuração do projeto em arquivo json, database ou objeto estático",
   "main": "dist/es2015/index.js",
   "module": "dist/es2015/index.js",
