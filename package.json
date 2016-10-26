@@ -2,18 +2,24 @@
   "name": "@ramonornela/configuration",
   "version": "0.0.3",
   "description": "Gerenciamento de configuração do projeto em arquivo json, database ou objeto estático",
-  "main": "es2015/index.js",
-  "module": "es2015/index.js",
-  "typings": "es2015/index.d.ts",
+  "main": "dist/es2015/index.js",
+  "module": "dist/es2015/index.js",
+  "typings": "dist/es2015/index.d.ts",
   "scripts": {
-    "clean": "rimraf ./dist && rimraf ./src/module.ngfactory.ts",
+    "clean": "rimraf ./dist",
     "lint": "tslint -c ./tslint.json --project ./tsconfig-es2015.json --force",
     "preparePackage": "node ./scripts/copy-package",
-    "build-cjs": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig.json",
+    "build:cjs": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig.json",
     "build:es2015": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-es2015.json",
-    "build": "npm run clean && npm run build-cjs && npm run build:es2015 && npm run preparePackage",
-    "publishPackage": "npm run lint && npm run build && cd dist && npm publish --access public"
+    "build": "npm run clean && npm run build:cjs && npm run build:es2015 && npm run preparePackage",
+    "del:ngfactory:dist": "rimraf ./dist/es**/module.ngfactory*",
+    "publishPackage": "npm run lint && npm run build && npm run del:ngfactory:dist && npm publish --access public"
   },
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
   "dependencies": {
     "@angular/core": "^2.0.1",
     "@angular/http": "^2.0.1"
