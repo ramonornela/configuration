@@ -11,8 +11,7 @@
     "build:umd": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig.json",
     "build:esm": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-esm.json",
     "build": "npm run clean && npm run build:umd && npm run build:esm && npm run preparePackage",
-    "delete:ngc:files": "rimraf ./dist/**/*ngfactory",
-    "publishPackage": "npm run lint && npm run build && npm run delete:ngc:files && npm publish --access public"
+    "publishPackage": "npm run lint && npm run build && npm publish --access public"
   },
   "files": [
     "dist/",
