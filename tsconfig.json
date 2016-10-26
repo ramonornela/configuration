@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "umd",
     "target": "es5",
     "experimentalDecorators": true,
     "sourceMap": true,
     "declaration": true,
     "removeComments": true,
-    "outDir": "dist/es5",
+    "outDir": "dist/umd",
     "moduleResolution": "node",
     "lib": [
       "es2015",
