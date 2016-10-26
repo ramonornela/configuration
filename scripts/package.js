@@ -34,6 +34,7 @@ var argvJson = JSON.parse(process.env.npm_config_argv);
 if (argvJson.original && argvJson.original.length > 2) {
   var method = argvJson.original[2].replace(/-/g, '');
   Package[method]();
+  return;
 }
 
 throw 'Should be argument assign argv prepare or restore';
