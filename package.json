@@ -8,11 +8,11 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json --force",
-    "preparePackage": "node ./scripts/copy-package",
+    "package:json": "node ./scripts/package",
     "build:umd": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig.json",
     "build:esm": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-esm.json",
-    "build": "npm run clean && npm run build:umd && npm run build:esm && npm run preparePackage",
-    "publishPackage": "npm run lint && npm run build && npm publish --access public"
+    "build": "npm run clean && npm run build:umd && npm run build:esm && npm run package:json",
+    "publishPackage": "npm run lint && npm run build && npm publish --access public && npm run package:json --restore"
   },
   "files": [
     "dist/",

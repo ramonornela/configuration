@@ -19,7 +19,6 @@ var Package = {
 
     delete packageJson.devDependencies;
     delete packageJson.dependencies;
-    delete packageJson.scripts;
 
     fs.renameSync(originalPath, tempPath);
     fs.writeFileSync(originalPath, JSON.stringify(packageJson, null, 2));	
