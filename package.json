@@ -1,6 +1,6 @@
 {
   "name": "@ramonornela/configuration",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Gerenciamento de configuração do projeto em arquivo json, database ou objeto estático",
   "main": "dist/umd/index.js",
   "typings": "dist/esm/index.d.ts",
