@@ -15,5 +15,11 @@
   },
   "include": [
     "src/**/*"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "genDir": "./dist/umd",
+    "skipTemplateCodegen": true,
+    "debug": false
+  }
 }
