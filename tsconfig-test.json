@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "module": "es2015",
+    "target": "es5",
+    "experimentalDecorators": true,
+    "sourceMap": false,
+    "declaration": false,
+    "removeComments": true,
+    "outDir": "dist/test",
+    "moduleResolution": "node",
+    "lib": [
+      "es2015",
+      "dom"
+    ]
+  },
+  "include": [
+    "test/**/*.ts"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "genDir": "dist/test",
+    "skipTemplateCodegen": true,
+    "debug": false
+  }
+}
