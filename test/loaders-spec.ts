@@ -5,12 +5,12 @@ describe('loaders', () => {
   describe('factories tests', () => {
     it('invalid type string', () => {
       expect(() => loaderFactory('{}', new MockBrowserXhr()))
-        .toThrow('Invalid configuration');
+        .toThrow(new Error('Invalid configuration'));
     });
 
     it('invalid type null', () => {
       expect(() => loaderFactory(null))
-        .toThrow('Invalid configuration');
+        .toThrow(new Error('Invalid configuration'));
     });
   });
 });
