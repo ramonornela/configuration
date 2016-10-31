@@ -15,9 +15,9 @@ export function loaderFactory(config: any, xhr?: BrowserXhr) {
   switch (true) {
     case typeof config === 'object':
       return dataFactory(config);
-    case typeof config === 'string':
+    case typeof config === 'string' && (config.indexOf('.json') !== -1 || config.indexOf('http') !== -1):
       return jsonFactory(config, xhr);
     default:
-      throw 'Configuração invâlida';
+      throw new Error('Invalid configuration');
   }
 }
