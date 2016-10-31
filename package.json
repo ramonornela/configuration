@@ -13,7 +13,7 @@
     "build:esm": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-esm.json",
     "build:test": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-test.json",
     "build": "npm run clean && npm run build:umd && npm run build:esm && npm run package:json --prepare",
-    "test": "npm run build:test && jasmine JASMINE_CONFIG_PATH=test/jasmine-config.json",
+    "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine-config.json",
     "publishPackage": "npm run lint && npm run build && npm publish --access public && npm run package:json --restore"
   },
   "files": [
@@ -22,11 +22,14 @@
     "README.md"
   ],
   "dependencies": {
+    "@angular/common": "^2.0.1",
     "@angular/core": "^2.0.1",
-    "@angular/http": "^2.0.1"
+    "@angular/http": "^2.0.1",
+    "@angular/platform-browser": "^2.0.1"
   },
   "devDependencies": {
     "@angular/compiler": "~2.1.0",
+
     "@angular/compiler-cli": "~2.1.0",
     "rxjs": "5.0.0-beta.12",
     "typescript": "^2.0.3",
