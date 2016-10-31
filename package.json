@@ -12,8 +12,8 @@
     "build:umd": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig.json",
     "build:esm": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-esm.json",
     "build:test": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-test.json",
-    "build": "npm run clean && npm run build:umd && npm run build:esm && npm run package:json --prepare",
-    "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine-config.json",
+    "build": "npm run test && npm run clean && npm run build:umd && npm run build:esm && npm run package:json --prepare",
+    "test": "npm run clean && npm run build:test && jasmine JASMINE_CONFIG_PATH=test/jasmine-config.json",
     "publishPackage": "npm run lint && npm run build && npm publish --access public && npm run package:json --restore"
   },
   "files": [

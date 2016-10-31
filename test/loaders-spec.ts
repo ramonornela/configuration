@@ -1,5 +1,5 @@
 import { MockBrowserXhr } from './mocks';
-import { loaderFactory } from '@ramonornela/configuration';
+import { loaderFactory } from '../src';
 
 describe('loaders', () => {
   describe('test factories', () => {
