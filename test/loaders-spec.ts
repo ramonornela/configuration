@@ -2,8 +2,15 @@ import { MockBrowserXhr } from './mocks';
 import { loaderFactory } from '../src';
 
 describe('loaders', () => {
-  describe('test factories', () => {
-    let factoryJson = loaderFactory('{}', new MockBrowserXhr());
-    console.log(factoryJson);
+  describe('factories tests', () => {
+    it('invalid type string', () => {
+      expect(() => loaderFactory('{}', new MockBrowserXhr()))
+        .toThrow('Invalid configuration');
+    });
+
+    it('invalid type null', () => {
+      expect(() => loaderFactory(null))
+        .toThrow('Invalid configuration');
+    });
   });
- });
+});

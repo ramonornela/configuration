@@ -13,7 +13,7 @@ export function jsonFactory(config: string, xhr: BrowserXhr): Json {
 export function loaderFactory(config: any, xhr?: BrowserXhr) {
 
   switch (true) {
-    case typeof config === 'object':
+    case typeof config === 'object' && config !== null:
       return dataFactory(config);
     case typeof config === 'string' && (config.indexOf('.json') !== -1 || config.indexOf('http') !== -1):
       return jsonFactory(config, xhr);
