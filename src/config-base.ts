@@ -30,10 +30,10 @@ export class ConfigBase implements Config {
   }
 
   set(key: string, value: any, env?: boolean | string): this {
-    let _env: string = '';
+    let _env: string = this.env;
 
-    if (env === true) {
-      _env = this.env;
+    if (env === false) {
+      _env = '';
     } else if (typeof env === 'string') {
       _env = env;
     }
@@ -50,10 +50,10 @@ export class ConfigBase implements Config {
 
   get(key: string, env?: boolean | string): any {
     let result: any = typeof this.data[key] !== undefined ? this.data[key] : null;
-    let _env: string = '';
+    let _env: string = this.env;
 
-    if (env === true) {
-      _env = this.env;
+    if (env === false) {
+      _env = '';
     } else if (typeof env === 'string') {
       _env = env;
     }
