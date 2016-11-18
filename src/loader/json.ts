@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BrowserXhr } from '@angular/http';
-import { ConfigBase } from '../config-base';
+import { ConfigBase, EnvToken } from '../config-base';
 
 @Injectable()
 export class Json extends ConfigBase {
 
-  constructor(file: string, xhr: BrowserXhr) {
-    super();
+  constructor(file: string, xhr: BrowserXhr, env?: string) {
+    super(null, env);
     this.setData(this.load(file, xhr));
   }
 
