@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BrowserXhr } from '@angular/http';
-import { ConfigBase, EnvToken } from '../config-base';
+import { ConfigBase } from '../config-base';
 
 @Injectable()
 export class Json extends ConfigBase {
