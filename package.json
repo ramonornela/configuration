@@ -7,14 +7,15 @@
   "module": "dist/esm/index.js",
   "scripts": {
     "clean": "rimraf ./dist",
+    "prepush": "npm run lint",
+    "commit": "git-cz",
     "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json --force",
     "package:json": "node ./scripts/package",
-    "build:umd": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig.json",
-    "build:esm": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-esm.json",
-    "build:test": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-test.json",
-    "build": "npm run test && npm run clean && npm run build:umd && npm run build:esm && npm run package:json --prepare",
-    "test": "npm run clean && npm run build:test && jasmine JASMINE_CONFIG_PATH=test/jasmine-config.json",
-    "publishPackage": "npm run lint && npm run build && npm publish --access public && npm run package:json --restore"
+    "build:umd": "ngc",
+    "build:esm": "ngc -p tsconfig-esm.json",
+    "build": "npm run clean && npm run build:umd && npm run build:esm",
+    "build:lint": "npm run lint && npm run build",
+    "publishPackage": "npm run build:lint && npm run package:json --prepare && npm publish --access public && npm run package:json --restore"
   },
   "files": [
     "dist/",
@@ -29,16 +30,18 @@
   },
   "devDependencies": {
     "@angular/compiler": "~2.1.0",
-
     "@angular/compiler-cli": "~2.1.0",
     "rxjs": "5.0.0-beta.12",
     "typescript": "^2.0.3",
     "tslint": "3.15.1",
     "tslint-eslint-rules": "1.5.0",
-    "tslint-ionic-rules": "0.0.5",
+    "tslint-ionic-rules": "0.0.8",
     "rimraf": "^2.5.4",
     "@types/jasmine": "2.2.33",
-    "jasmine": "2.5.2"
+    "jasmine": "2.5.2",
+    "commitizen": "^2.8.6",
+    "cz-conventional-changelog": "^1.2.0",
+    "husky": "^0.11.9"
   },
   "peerDependencies": {
     "@angular/core": "^2.0.0",
