@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpModule, BrowserXhr } from '@angular/http';
-import { Config } from './config';
-import { ConfigToken, EnvToken } from './config-base';
-import { loaderFactory } from './factory';
+import { Config, loaderFactory, ConfigToken, EnvToken } from './providers';
 
 @NgModule({
   imports: [ HttpModule ],
