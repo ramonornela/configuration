@@ -65,6 +65,7 @@
     "get",
     "post"
   ],
+  "author": "Ramon Ornelas <ramon.ornela@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ramonornela/configuration/issues"
