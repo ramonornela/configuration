@@ -4,7 +4,7 @@ import { Config } from './config';
 export const ConfigToken = new OpaqueToken('CONFIGTOKEN');
 export const EnvToken = new OpaqueToken('ENVTOKEN');
 
-export class ConfigBase implements Config {
+export abstract class ConfigBase implements Config {
 
   protected data: Object;
 
