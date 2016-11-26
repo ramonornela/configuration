@@ -1,8 +1,10 @@
+import 'jasmine';
 import { MockBrowserXhr } from './mocks';
 import { loaderFactory, Json, ConfigBase } from '../src';
 
 describe('loaders', () => {
   describe('factories type invalids', () => {
+
     it('invalid type string', () => {
       expect(() => loaderFactory('{}', new MockBrowserXhr()))
         .toThrow(new Error('Invalid configuration'));
