@@ -8,6 +8,16 @@ export class JsonData extends ConfigBase {
   constructor(file: string, xhr: BrowserXhr, env?: string) {
     super(env);
     let data = this.load(file, xhr);
+
+    if (Array.isArray(data)) {
+      throw new Error(`Data type 'array' to config invalid`);
+    }
+
+    if (Object.keys(data).length === 0) {
+      throw new Error('Config is required');
+    }
+
+    this.data = data;
   }
 
   load(file: string, xhr: BrowserXhr): any {
