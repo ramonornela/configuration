@@ -39,7 +39,12 @@ export abstract class ConfigBase implements Config {
   }
 
   get(key: string, env?: boolean | string): any {
-    let result: any = typeof this.data[key] !== undefined ? this.data[key] : null;
+    let result: any = this.data[key] !== undefined ? this.data[key] : null;
+
+    if (result === null) {
+      return null;
+    }
+
     let _env: string = this.env;
 
     if (env === false) {

@@ -36,4 +36,8 @@ describe('Module Config', () => {
     config.set('my-other-config', 'value-config');
     expect(config.get('my-other-config')).toEqual('value-config');
   }));
+
+  it('Get invalid config', inject([Config], (config: Config) => {
+    expect(config.get('my-config-invalid')).toEqual(null);
+  }));
 });
