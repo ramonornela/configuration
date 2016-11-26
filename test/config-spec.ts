@@ -54,4 +54,26 @@ describe('Module Config', () => {
   it('Get config env invalid', inject([Config], (config: Config) => {
     expect(config.get('my-config-env', 'prod')).toBeNull();
   }));
+
+  it('Fluent interface', inject([Config], (config: Config) => {
+     config.setEnv('dev')
+          .set('config-fluent', 'Config');
+  }));
+
+  it('Set env env: dev -> prod', inject([Config], (config: Config) => {
+      config.set('my-config-setenv', 'valueDev');
+      config.set('my-config-setenv', 'valueProd', 'prod');
+      expect(config.get('my-config-setenv')).toBe('valueDev');
+      expect(config.get('my-config-setenv', 'dev')).toBe('valueDev');
+      expect(config.get('my-config-setenv', 'prod')).toBe('valueProd');
+  }));
+
+
+  it('Set env env: prod -> dev', inject([Config], (config: Config) => {
+      config.set('my-config-setenv', 'valueProd', 'prod');
+      config.set('my-config-setenv', 'valueDev');
+      expect(config.get('my-config-setenv')).toBe('valueDev');
+      expect(config.get('my-config-setenv', 'dev')).toBe('valueDev');
+      expect(config.get('my-config-setenv', 'prod')).toBe('valueProd');
+  }));
 });
