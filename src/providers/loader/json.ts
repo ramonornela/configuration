@@ -20,12 +20,12 @@ export class Json extends ConfigBase {
       try {
         data = JSON.parse(_xhr.responseText);
       } catch (err) {
-        throw 'Sintaxe erro no arquivo' + file + ' error: ' + err.message;
+        throw new Error(`Syntax error '${file}' error: ${err.message}`);
       }
     });
 
     _xhr.addEventListener('error', () => {
-      throw 'Arquivo de configuração inexistente ' + file;
+      throw new Error(`Problem to access '${file}'`);
     });
 
     _xhr.send();
