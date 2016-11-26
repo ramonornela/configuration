@@ -15,7 +15,7 @@
     "commit": "git-cz",
     "clean": "rimraf ./dist",
     "doc": "typedoc --tsconfig tsconfig-esm.json --options typedoc.json src/",
-    "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json --force",
+    "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json",
     "nightly": "npm run build:lint && node ./scripts/nightly",
     "prepush": "npm run lint",
     "package:json": "node ./scripts/package",
