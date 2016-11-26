@@ -12,7 +12,7 @@ describe('loaders', () => {
 
     it('invalid type null', () => {
       expect(() => loaderFactory(null))
-        .toThrow(new Error('Invalid configuration'));
+        .toThrow(new Error('Data type config invalid'));
     });
 
     it('invalid type number', () => {
@@ -22,24 +22,12 @@ describe('loaders', () => {
 
     it('invalid type array', () => {
       expect(() => loaderFactory([]))
-        .toThrow(new Error('Invalid configuration'));
+        .toThrow(new Error('Data type config invalid'));
     });
 
     it('object empty', () => {
       expect(() => loaderFactory({}))
-        .toThrow(new Error('Data is required'));
-    });
-  });
-
-  describe('factories json', () => {
-    it('test file external http', () => {
-      var jsonLoader = loaderFactory('http://example.com/data', new MockBrowserXhr());
-      expect(jsonLoader instanceof JsonData).toBeTruthy();
-    });
-
-    it('test file local', () => {
-      var jsonLoader = loaderFactory('assets/data.json', new MockBrowserXhr());
-      expect(jsonLoader instanceof JsonData).toBeTruthy();
+        .toThrow(new Error('Config is required'));
     });
   });
 
