@@ -1,13 +1,13 @@
 import { BrowserXhr } from '@angular/http';
-import { ConfigBase } from './config-base';
-import { Json } from './loader/json';
+import { ObjectData } from './data/object';
+import { JsonData } from './data/json';
 
-export function dataFactory(config: Object, env?: string): ConfigBase {
-  return new ConfigBase(config, env);
+export function dataFactory(config: Object, env?: string): Object {
+  return new ObjectData(config, env);
 }
 
-export function jsonFactory(config: string, xhr: BrowserXhr, env?: string): Json {
-  return new Json(config, xhr, env);
+export function jsonFactory(config: string, xhr: BrowserXhr, env?: string): JsonData {
+  return new JsonData(config, xhr, env);
 }
 
 export function loaderFactory(config: any, xhr?: BrowserXhr, env?: string) {

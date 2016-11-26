@@ -4,21 +4,11 @@ import { Config } from './config';
 export const ConfigToken = new OpaqueToken('CONFIGTOKEN');
 export const EnvToken = new OpaqueToken('ENVTOKEN');
 
-@Injectable()
 export class ConfigBase implements Config {
 
-  protected data: any;
+  protected data: Object;
 
-  constructor(data: any, private env?: string) {
-    if (data) {
-      this.setData(data);
-    }
-  }
-
-  setData(data: any): this {
-    this.data = data;
-    return this;
-  }
+  constructor(private env?: string) {}
 
   setEnv(env: string): this {
     this.env = env;

@@ -1,6 +1,6 @@
 import 'jasmine';
 import { MockBrowserXhr } from './mocks';
-import { loaderFactory, Json, ConfigBase } from '../src';
+import { loaderFactory, JsonData, ObjectData } from '../src';
 
 describe('loaders', () => {
   describe('factories type invalids', () => {
@@ -24,24 +24,29 @@ describe('loaders', () => {
       expect(() => loaderFactory([]))
         .toThrow(new Error('Invalid configuration'));
     });
+
+    it('object empty', () => {
+      expect(() => loaderFactory({}))
+        .toThrow(new Error('Data is required'));
+    });
   });
 
   describe('factories json', () => {
     it('test file external http', () => {
       var jsonLoader = loaderFactory('http://example.com/data', new MockBrowserXhr());
-      expect(jsonLoader instanceof Json).toBeTruthy();
+      expect(jsonLoader instanceof JsonData).toBeTruthy();
     });
 
     it('test file local', () => {
       var jsonLoader = loaderFactory('assets/data.json', new MockBrowserXhr());
-      expect(jsonLoader instanceof Json).toBeTruthy();
+      expect(jsonLoader instanceof JsonData).toBeTruthy();
     });
   });
 
   describe('factory object', () => {
     it('test object', () => {
-      var jsonLoader = loaderFactory({});
-      expect(jsonLoader instanceof ConfigBase).toBeTruthy();
+      var jsonLoader = loaderFactory({'key': 'value' });
+      expect(jsonLoader instanceof ObjectData).toBeTruthy();
     });
   });
 });
