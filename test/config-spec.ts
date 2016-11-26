@@ -15,7 +15,10 @@ TestBed.initTestEnvironment(
 describe('Module Config', () => {
   beforeEach(() => {
     let data = {
-      'my-config': 'value'
+      'my-config': 'value',
+      'my-config-env': {
+        'dev': 'Config Dev'
+      }
     };
     TestBed.configureTestingModule({
       providers: [
@@ -38,6 +41,17 @@ describe('Module Config', () => {
   }));
 
   it('Get invalid config', inject([Config], (config: Config) => {
-    expect(config.get('my-config-invalid')).toEqual(null);
+    expect(config.get('my-config-invalid')).toBeNull();
+  }));
+
+  it('Get config env', inject([Config], (config: Config) => {
+    expect(config.get('my-config-env')).toBe('Config Dev');
+    config.set('my-config-env', 'Config Prod', 'prod');
+    expect(config.get('my-config-env')).toBe('Config Dev');
+    expect(config.get('my-config-env', 'prod')).toBe('Config Prod');
+  }));
+
+  it('Get config env invalid', inject([Config], (config: Config) => {
+    expect(config.get('my-config-env', 'prod')).toBeNull();
   }));
 });

@@ -45,16 +45,19 @@ export abstract class ConfigBase implements Config {
       return null;
     }
 
-    let _env: string = this.env;
-
+    // less env
     if (env === false) {
-      _env = '';
-    } else if (typeof env === 'string') {
-      _env = env;
+      return result;
     }
 
-    if (_env && result[_env] !== undefined) {
-      return result[_env];
+    // env assign in arg
+    if (typeof env === 'string') {
+      return result[env] !== undefined ? result[env] : null;
+    }
+
+    // catch env global
+    if (result[this.env] !== undefined) {
+      return result[this.env];
     }
 
     return result;
