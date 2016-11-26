@@ -35,6 +35,7 @@
     "@angular/compiler": "~2.1.0",
     "@angular/compiler-cli": "~2.1.0",
     "@types/jasmine": "2.2.33",
+    "codelyzer": "1.0.0-beta.3",
     "commitizen": "^2.8.6",
     "conventional-changelog-cli": "^1.2.0",
     "cz-conventional-changelog": "^1.2.0",
