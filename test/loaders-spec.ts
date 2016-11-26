@@ -17,6 +17,11 @@ describe('loaders', () => {
       expect(() => loaderFactory(1))
         .toThrow(new Error('Invalid configuration'));
     });
+
+    it('invalid type array', () => {
+      expect(() => loaderFactory([]))
+        .toThrow(new Error('Invalid configuration'));
+    });
   });
 
   describe('factories json', () => {
