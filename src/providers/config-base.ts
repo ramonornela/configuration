@@ -1,4 +1,4 @@
-import { Injectable, OpaqueToken } from '@angular/core';
+import { OpaqueToken } from '@angular/core';
 import { Config } from './config';
 
 export const ConfigToken = new OpaqueToken('CONFIGTOKEN');

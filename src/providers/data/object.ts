@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BrowserXhr } from '@angular/http';
 import { ConfigBase } from '../config-base';
 
 @Injectable()
@@ -14,5 +13,7 @@ export class ObjectData extends ConfigBase {
     if (Object.keys(data).length === 0) {
       throw new Error(`Data is required`);
     }
+
+    this.data = data;
   }
 }
