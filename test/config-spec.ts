@@ -18,6 +18,10 @@ describe('Module Config', () => {
       'my-config': 'value',
       'my-config-env': {
         'dev': 'Config Dev'
+      },
+      'my-config-initialize-scalar': 'valueInit',
+      'my-config-initialize-object': {
+        'value': 'one'
       }
     };
     TestBed.configureTestingModule({
@@ -60,7 +64,7 @@ describe('Module Config', () => {
           .set('config-fluent', 'Config');
   }));
 
-  it('Set env env: dev -> prod', inject([Config], (config: Config) => {
+  it('Set env env', inject([Config], (config: Config) => {
       config.set('my-config-setenv', 'valueDev');
       config.set('my-config-setenv', 'valueProd', 'prod');
       expect(config.get('my-config-setenv')).toBe('valueDev');
@@ -69,11 +73,11 @@ describe('Module Config', () => {
   }));
 
 
-  it('Set env env: prod -> dev', inject([Config], (config: Config) => {
-      config.set('my-config-setenv', 'valueProd', 'prod');
-      config.set('my-config-setenv', 'valueDev');
-      expect(config.get('my-config-setenv')).toBe('valueDev');
-      expect(config.get('my-config-setenv', 'dev')).toBe('valueDev');
-      expect(config.get('my-config-setenv', 'prod')).toBe('valueProd');
+  it('Set env param initialize', inject([Config], (config: Config) => {
+      expect(() => config.set('my-config-initialize-scalar', 'valueProd', 'prod'))
+        .toThrow(new Error('Not allow assign to value initialized how scalar'));
+
+      expect(() => config.set('my-config-initialize-object', 'valueProd', 'prod'))
+        .toThrow(new Error('Not allow assign to value initialized how object'))
   }));
 });
