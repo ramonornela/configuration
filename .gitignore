@@ -15,6 +15,7 @@ npm-*
 node_modules/
 dist/
 doc/
+coverage/
 *.swp
 .DS_Store
 Thumbs.db

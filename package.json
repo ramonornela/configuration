@@ -15,13 +15,14 @@
     "commit": "git-cz",
     "clean": "rimraf ./dist",
     "doc": "typedoc --tsconfig tsconfig-esm.json --options typedoc.json src/",
+    "cover": "istanbul cover ./dist/**/*.js",
     "jasmine": "jasmine JASMINE_CONFIG_PATH=test/jasmine-config.json",
     "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json",
     "nightly": "npm run build:lint && node ./scripts/nightly",
     "prepush": "npm run lint",
     "package:json": "node ./scripts/package",
     "publishPackage": "npm run build:qa && npm run package:json --prepare && npm publish --access public && npm run package:json --restore",
-    "test": "npm run clean && npm run build:test && npm run jasmine"
+    "test": "npm run clean && npm run build:test && npm run jasmine && npm run cover"
   },
   "files": [
     "dist/",
@@ -46,6 +47,7 @@
     "cz-conventional-changelog": "^1.2.0",
     "fluid-publish": "1.1.0",
     "husky": "^0.11.9",
+    "istanbul": "^0.4.5",
     "jasmine": "2.5.2",
     "rimraf": "^2.5.4",
     "reflect-metadata": "0.1.8",
