@@ -5,6 +5,7 @@ import { Config, loaderFactory, ConfigToken, EnvToken, CustomLoaderToken } from 
 @NgModule({
   imports: [ HttpModule ],
   providers: [
+    {provide: CustomLoaderToken, useValue: null},
     {provide: Config, useFactory: loaderFactory, deps: [ConfigToken, BrowserXhr, EnvToken, CustomLoaderToken]}
   ]
 })
