@@ -9,7 +9,7 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-// import ConfigModule
+// import ConfigurationModule
 import { ConfigToken, ConfigurationModule, EnvToken } from '@ramonornela/configuration';
 
 export const APP_CONFIG = {
