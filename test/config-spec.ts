@@ -7,12 +7,18 @@ import { TestBed, inject } from '@angular/core/testing';
 import { platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { ConfigModule, Config, ConfigToken, EnvToken } from '../src';
 
-TestBed.initTestEnvironment(
-  ConfigModule,
-  platformBrowserDynamicTesting()
-);
-
 describe('Module Config', () => {
+  beforeAll(() => {
+    TestBed.initTestEnvironment(
+      ConfigModule,
+      platformBrowserDynamicTesting()
+    );
+  });
+
+  afterAll(() => {
+    TestBed.resetTestEnvironment();
+  });
+
   beforeEach(() => {
     let data = {
       'my-config': 'value',
