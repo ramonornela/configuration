@@ -1,6 +1,6 @@
 # ConfigModule
 
-This allow define configuration in the app with object, file json (local or external) or custom strategy 
+This allow define configuration in the app with object, file json (local or external) or custom strategy (ex: yaml)
 
 ## Using  in an Ionic 2 app
 
