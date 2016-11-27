@@ -1,4 +1,4 @@
-# ConfigModule
+# ConfigurationModule
 
 This allow define configuration in the app with object, file json (local or external) or custom strategy (ex: yaml)
 
