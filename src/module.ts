@@ -8,5 +8,5 @@ import { Config, loaderFactory, ConfigToken, EnvToken, CustomLoaderToken } from 
     {provide: Config, useFactory: loaderFactory, deps: [ConfigToken, BrowserXhr, EnvToken, CustomLoaderToken]}
   ]
 })
-export class ConfigModule {
+export class ConfigurationModule {
 }

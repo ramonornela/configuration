@@ -10,7 +10,7 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 // import ConfigModule
-import { ConfigToken, ConfigModule, EnvToken } from '@ramonornela/configuration';
+import { ConfigToken, ConfigurationModule, EnvToken } from '@ramonornela/configuration';
 
 export const APP_CONFIG = {
   'my-config': 'My Config',
@@ -26,7 +26,7 @@ export const APP_CONFIG = {
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    ConfigModule,
+    ConfigurationModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

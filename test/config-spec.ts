@@ -5,7 +5,7 @@ import 'zone.js/dist//sync-test';
 import 'zone.js/dist/jasmine-patch';
 import { TestBed, inject } from '@angular/core/testing';
 import { platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import { ConfigModule, Config, ConfigToken, EnvToken, CustomLoaderToken } from '../src';
+import { ConfigurationModule, Config, ConfigToken, EnvToken, CustomLoaderToken } from '../src';
 import { customLoader } from './mocks';
 
 function configModule(data?: Object, loader?: Function) {
@@ -31,7 +31,7 @@ function configModule(data?: Object, loader?: Function) {
 describe('Module Config', () => {
   beforeAll(() => {
     TestBed.initTestEnvironment(
-      ConfigModule,
+      ConfigurationModule,
       platformBrowserDynamicTesting()
     );
   });
