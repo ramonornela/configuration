@@ -1,6 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { BrowserXhr } from '@angular/http';
+import { ConfigBase } from '../src';
 
 @Injectable()
 export class MockBrowserXhr extends BrowserXhr {
@@ -17,16 +18,23 @@ export class MockBrowserXhr extends BrowserXhr {
   }
 }
 
-export var XHRProxy = function() {
-  this.uri = null;
+class XHRProxy {
+
+  responseType: any;
+
+  open(method, uri, sync) {}
+
+  addEventListener(event, callback) {}
+
+  send(data) {}
 }
 
-XHRProxy.prototype.responseType = null;
-
-XHRProxy.prototype.open = function(method, uri, sync) {
-  this.file = uri;
+export function customLoader(config: any, env: string) {
+  return new MyCustomLoader(config, env);
 }
 
-XHRProxy.prototype.addEventListener = function(event, callback) {}
-
-XHRProxy.prototype.send = function(data) {}
+export class MyCustomLoader extends ConfigBase {
+  constructor(public file, env: string) {
+    super(env);
+  }
+}

@@ -3,6 +3,7 @@ import { Config } from './config';
 
 export const ConfigToken = new OpaqueToken('CONFIGTOKEN');
 export const EnvToken = new OpaqueToken('ENVTOKEN');
+export const CustomLoaderToken = new OpaqueToken('CUSTOMLOADERTOKEN');
 
 export abstract class ConfigBase implements Config {
 

@@ -5,8 +5,29 @@ import 'zone.js/dist//sync-test';
 import 'zone.js/dist/jasmine-patch';
 import { TestBed, inject } from '@angular/core/testing';
 import { platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import { ConfigModule, Config, ConfigToken, EnvToken } from '../src';
+import { ConfigModule, Config, ConfigToken, EnvToken, CustomLoaderToken } from '../src';
+import { customLoader } from './mocks';
 
+function configModule(data?: Object, loader?: Function) {
+  data = data || {
+    'my-config': 'value',
+    'my-config-env': {
+      'dev': 'Config Dev'
+    },
+    'my-config-initialize-scalar': 'valueInit',
+    'my-config-initialize-object': {
+      'value': 'one'
+     }
+  };
+
+  TestBed.configureTestingModule({
+    providers: [
+      { provide: ConfigToken, useValue: data },
+      { provide: CustomLoaderToken, useValue: loader },
+      { provide: EnvToken, useValue: 'dev' }
+    ]
+  });
+}
 describe('Module Config', () => {
   beforeAll(() => {
     TestBed.initTestEnvironment(
@@ -20,25 +41,10 @@ describe('Module Config', () => {
   });
 
   beforeEach(() => {
-    let data = {
-      'my-config': 'value',
-      'my-config-env': {
-        'dev': 'Config Dev'
-      },
-      'my-config-initialize-scalar': 'valueInit',
-      'my-config-initialize-object': {
-        'value': 'one'
-      }
-    };
-    TestBed.configureTestingModule({
-      providers: [
-        { provide: ConfigToken, useValue: data },
-        { provide: EnvToken, useValue: 'dev' }
-      ]
-    });
+    configModule();
   });
 
-  it('Env', inject([Config], (config: Config) => {
+  it('Env', inject([Config], (config: any) => {
     expect(config.getEnv()).toEqual('dev');
     config.setEnv('prod');
     expect(config.getEnv()).toEqual('prod');
@@ -66,24 +72,34 @@ describe('Module Config', () => {
   }));
 
   it('Fluent interface', inject([Config], (config: Config) => {
-     config.setEnv('dev')
-          .set('config-fluent', 'Config');
+    config.setEnv('dev').set('config-fluent', 'Config');
   }));
 
   it('Set env env', inject([Config], (config: Config) => {
-      config.set('my-config-setenv', 'valueDev');
-      config.set('my-config-setenv', 'valueProd', 'prod');
-      expect(config.get('my-config-setenv')).toBe('valueDev');
-      expect(config.get('my-config-setenv', 'dev')).toBe('valueDev');
-      expect(config.get('my-config-setenv', 'prod')).toBe('valueProd');
+    config.set('my-config-setenv', 'valueDev');
+    config.set('my-config-setenv', 'valueProd', 'prod');
+    expect(config.get('my-config-setenv')).toBe('valueDev');
+    expect(config.get('my-config-setenv', 'dev')).toBe('valueDev');
+    expect(config.get('my-config-setenv', 'prod')).toBe('valueProd');
   }));
 
-
   it('Set env param initialize', inject([Config], (config: Config) => {
-      expect(() => config.set('my-config-initialize-scalar', 'valueProd', 'prod'))
+     expect(() => config.set('my-config-initialize-scalar', 'valueProd', 'prod'))
         .toThrow(new Error('Not allow assign to value initialized how scalar'));
 
       expect(() => config.set('my-config-initialize-object', 'valueProd', 'prod'))
         .toThrow(new Error('Not allow assign to value initialized how object'))
   }));
+
+  describe('Custom loader', () => {
+
+    beforeEach(() => {
+      configModule('test.yml', customLoader);
+    });
+
+    it('custom loader', inject([Config], (config: any) => {
+      expect(config.file).toBe('test.yml');
+    }));
+
+  });
 });

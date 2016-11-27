@@ -1,5 +1,5 @@
 import 'jasmine';
-import { MockBrowserXhr } from './mocks';
+import { MockBrowserXhr, customLoader, MyCustomLoader } from './mocks';
 import { loaderFactory, JsonData, ObjectData } from '../src';
 
 describe('loaders', () => {
@@ -33,8 +33,15 @@ describe('loaders', () => {
 
   describe('factory object', () => {
     it('test object', () => {
-      var jsonLoader = loaderFactory({'key': 'value' });
+      let jsonLoader = loaderFactory({'key': 'value' });
       expect(jsonLoader instanceof ObjectData).toBeTruthy();
+    });
+  });
+
+  describe('factory custom', () => {
+    it('test object', () => {
+      let myLoader = loaderFactory('test.yml', null, null, customLoader);
+      expect(myLoader instanceof MyCustomLoader).toBeTruthy();
     });
   });
 });
