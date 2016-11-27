@@ -8,7 +8,7 @@
     "sourceMap": false,
     "declaration": false,
     "removeComments": true,
-    "outDir": "dist/test",
+    "outDir": "dist",
     "moduleResolution": "node",
     "lib": [
       "es2015",
