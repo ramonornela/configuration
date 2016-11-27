@@ -1,3 +1,13 @@
+<a name="0.0.11"></a>
+## [0.0.11](https://github.com/ramonornela/configuration/compare/v0.0.10...v0.0.11) (2016-11-27)
+
+
+### Bug Fixes
+
+* **module:** initialize token CustomLoaderToken that allow pass callback custom loader ([6c338e1](https://github.com/ramonornela/configuration/commit/6c338e1))
+
+
+
 <a name="0.0.10"></a>
 ## [0.0.10](https://github.com/ramonornela/configuration/compare/v0.0.9...v0.0.10) (2016-11-27)
 
