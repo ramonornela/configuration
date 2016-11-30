@@ -1,3 +1,13 @@
+<a name="0.0.12"></a>
+## [0.0.12](https://github.com/ramonornela/configuration/compare/v0.0.11...v0.0.12) (2016-11-30)
+
+
+### Features
+
+* **module:** add method initialize(), break bc ([041ceb3](https://github.com/ramonornela/configuration/commit/041ceb3))
+
+
+
 <a name="0.0.11"></a>
 ## [0.0.11](https://github.com/ramonornela/configuration/compare/v0.0.10...v0.0.11) (2016-11-27)
 
