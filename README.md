@@ -10,7 +10,7 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 // import ConfigurationModule
-import { ConfigToken, ConfigurationModule, EnvToken } from '@ramonornela/configuration';
+import { ConfigurationModule } from '@ramonornela/configuration';
 
 export const APP_CONFIG = {
   'my-config': 'My Config',
@@ -26,15 +26,11 @@ export const APP_CONFIG = {
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    ConfigurationModule,
+    ConfigurationModule.initialize(APP_CONFIG, 'dev')
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp
-  ],
-  providers: [
-    { provide: EnvToken, useValue: 'dev' },
-    { provide: ConfigToken, useValue: APP_CONFIG }
   ]
 })
 export class AppModule {}
