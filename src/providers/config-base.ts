@@ -122,10 +122,9 @@ export abstract class ConfigBase implements Config {
 
   protected getResult(result: any, env: string) {
 
-    let envs = []; 
     let keyExtends = [env, ':'].join('');
     let envExtend: string | void;
-    
+
     Object.keys(result).forEach((keyEnv: any) => {
       if (keyEnv.indexOf(keyExtends) === 0) {
         env = keyEnv;
