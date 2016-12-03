@@ -30,6 +30,7 @@ export abstract class ConfigBase implements Config {
     for (let key in this.data) {
       for (let keyEnv in this.data[key]) {
         if (keyEnv.indexOf(':') !== -1) {
+          // @todo validate extract
           let env = keyEnv.substr(0, keyEnv.indexOf(':'));
           let envExtend = keyEnv.substr(keyEnv.indexOf(':') + 1);
           this.setKeyEnvExtend(key, env, envExtend);
