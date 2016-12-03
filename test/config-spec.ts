@@ -127,6 +127,24 @@ describe('Module Config', () => {
       expect(configExtendStaging.name).toEqual('George');
       expect(configExtendStaging.age).toEqual(30);
     }));
+
+
+    describe('Env extends global', () => {
+
+      beforeEach(() => {
+        configModule();
+      });
+
+      it('all prod extend dev', inject([Config], (config: any) => {
+        config.setEnvExtends('prod2', 'dev')
+              .set('my-config-extends', {name: 'Ramon'}, 'prod2');
+
+        let configExtendData = config.get('my-config-extends', 'prod2');
+        expect(configExtendData.name).toEqual('Ramon');
+        expect(configExtendData.age).toEqual(20);
+      }));
+    });
+
   });
 
   describe('Custom loader', () => {

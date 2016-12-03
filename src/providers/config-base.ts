@@ -134,7 +134,7 @@ export abstract class ConfigBase implements Config {
 
     if (!envExtend) {
       envExtend = this.getEnvExtends(env);
-    }
+  }
 
     // not extends
     if (!envExtend) {
