@@ -5,7 +5,11 @@ import { ConfigBase } from '../config-base';
 export class ObjectData extends ConfigBase {
 
   constructor(data: Object, env?: string) {
-    super(env);
+    super(env, data);
+  }
+
+  protected getData(data: Object): Object {
+
     if (data === null || Array.isArray(data)) {
       throw new Error('Data type config invalid');
     }
@@ -14,6 +18,6 @@ export class ObjectData extends ConfigBase {
       throw new Error('Config is required');
     }
 
-    this.data = data;
+    return data;
   }
 }

@@ -6,7 +6,10 @@ import { ConfigBase } from '../config-base';
 export class JsonData extends ConfigBase {
 
   constructor(file: string, xhr: BrowserXhr, env?: string) {
-    super(env);
+    super(env, file, xhr);
+  }
+
+  protected getData(file: string, xhr: BrowserXhr): Object {
     let data = this.load(file, xhr);
 
     if (Array.isArray(data)) {
@@ -17,10 +20,10 @@ export class JsonData extends ConfigBase {
       throw new Error('Config is required');
     }
 
-    this.data = data;
+    return data;
   }
 
-  load(file: string, xhr: BrowserXhr): any {
+  protected load(file: string, xhr: BrowserXhr): Object {
     let data: any;
     let _xhr = xhr.build();
 

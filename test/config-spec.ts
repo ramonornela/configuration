@@ -17,6 +17,18 @@ function configModule(data?: Object, loader?: Function) {
     'my-config-initialize-scalar': 'valueInit',
     'my-config-initialize-object': {
       'value': 'one'
+     },
+     'my-config-extends': {
+       'dev': {
+         'name': 'John',
+         'age': 20
+       },
+       'staging:dev': {
+         'name': 'George'
+       },
+       'prod:staging': {
+         'age': 30,
+       }
      }
   };
 
@@ -87,6 +99,35 @@ describe('Module Config', () => {
       expect(() => config.set('my-config-initialize-object', 'valueProd', 'prod'))
         .toThrow(new Error('Not allow assign to value initialized how object'))
   }));
+
+  describe('Extends env', () => {
+    it('invalid value', inject([Config], (config: Config) => {
+      expect(() => config.set('my-config-extends-dev2', 'Name', 'dev2:dev'))
+        .toThrow(new Error('To extends value should be object'));
+
+      expect(() => config.set('my-config-extends-dev3', { name: 'Name'}, 'dev3:dev'))
+        .toThrow(new Error(`The env 'dev' should be object`));
+    }));
+
+    it('set config', inject([Config], (config: Config) => {
+      config.set('my-config-dev1', {name: 'George'}, 'dev1');
+      config.set('my-config-dev1', {name: 'John', age: 40}, 'dev2:dev1');
+
+      let configDev1 = config.get('my-config-dev1', 'dev2');
+      expect(configDev1.name).toEqual('John');
+      expect(configDev1.age).toEqual(40);
+    }));
+
+    it('get set env', inject([Config], (config: Config) => {
+      let configExtendStaging = config.get('my-config-extends', 'staging');
+      expect(configExtendStaging.name).toEqual('George');
+      expect(configExtendStaging.age).toEqual(20);
+
+      let configExtendProd = config.get('my-config-extends', 'prod');
+      expect(configExtendStaging.name).toEqual('George');
+      expect(configExtendStaging.age).toEqual(30);
+    }));
+  });
 
   describe('Custom loader', () => {
 

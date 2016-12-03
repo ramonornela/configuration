@@ -37,4 +37,8 @@ export class MyCustomLoader extends ConfigBase {
   constructor(public file, env: string) {
     super(env);
   }
+
+  protected getData(): Object {
+    return {};
+  }
 }
