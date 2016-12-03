@@ -33,7 +33,7 @@ function configModule(data?: Object, loader?: Function) {
   };
 
   TestBed.configureTestingModule({
-    imports: [ConfigurationModule.initialize(data, 'dev', loader)]
+    imports: [ ConfigurationModule.initialize(data, 'dev', loader) ]
   });
 }
 
@@ -84,7 +84,7 @@ describe('Module Config', () => {
     config.setEnv('dev').set('config-fluent', 'Config');
   }));
 
-  it('Set env env', inject([Config], (config: Config) => {
+  it('Set env', inject([Config], (config: Config) => {
     config.set('my-config-setenv', 'valueDev');
     config.set('my-config-setenv', 'valueProd', 'prod');
     expect(config.get('my-config-setenv')).toBe('valueDev');
@@ -128,7 +128,6 @@ describe('Module Config', () => {
       expect(configExtendStaging.age).toEqual(30);
     }));
 
-
     describe('Env extends global', () => {
 
       beforeEach(() => {
@@ -136,7 +135,7 @@ describe('Module Config', () => {
       });
 
       it('all prod extend dev', inject([Config], (config: any) => {
-        config.setEnvExtends('prod2', 'dev')
+        config.setEnvExtend('prod2', 'dev')
               .set('my-config-extends', {name: 'Ramon'}, 'prod2');
 
         let configExtendData = config.get('my-config-extends', 'prod2');

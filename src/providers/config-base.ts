@@ -11,7 +11,9 @@ export abstract class ConfigBase implements Config {
 
   protected static envs: Array<string> = [];
 
-  protected envExtend: {[key: string]: string} = {};
+  protected envsExtend: {[key: string]: string} = {};
+
+  protected keysEnvExtend: {[key: string]: {[key: string]: string}} = {};
 
   constructor(private env?: string, ...args: Array<any>) {
     if (env) {
@@ -19,12 +21,22 @@ export abstract class ConfigBase implements Config {
     }
 
     this.data = this.getData.apply(this, args);
-    this.validate();
+    this.extractExtends();
   }
 
   protected abstract getData(...args: Array<any>): Object;
 
-  validate() {}
+  extractExtends() {
+    for (let key in this.data) {
+      for (let keyEnv in this.data[key]) {
+        if (keyEnv.indexOf(':') !== -1) {
+          let env = keyEnv.substr(0, keyEnv.indexOf(':'));
+          let envExtend = keyEnv.substr(keyEnv.indexOf(':') + 1);
+          this.setKeyEnvExtend(key, env, envExtend);
+        }
+      }
+    }
+  }
 
   setEnv(env: string): this {
     ConfigBase.envs.push(env);
@@ -36,13 +48,32 @@ export abstract class ConfigBase implements Config {
     return this.env;
   }
 
-  setEnvExtends(env: string, envExtend: string): this {
-    this.envExtend[env] = envExtend;
+  setEnvExtend(env: string, envExtend: string): this {
+    this.envsExtend[env] = envExtend;
     return this;
   }
 
-  getEnvExtends(env: string): string | void {
-    return this.envExtend[env] ? this.envExtend[env] : null;
+  getEnvExtend(env: string): string | void {
+    return this.envsExtend[env] ? this.envsExtend[env] : null;
+  }
+
+  setKeyEnvExtend(key: string, env: string, envExtend: string): this {
+    this.keysEnvExtend[key] = this.keysEnvExtend[key] || {};
+    this.keysEnvExtend[key][env] = envExtend;
+
+    return this;
+  }
+
+  getKeyEnvExtend(key: string, env: string): string | void {
+    if (this.keysEnvExtend[key] === undefined) {
+      return null;
+    }
+
+    if (this.keysEnvExtend[key][env] === undefined) {
+      return null;
+    }
+
+    return this.keysEnvExtend[key][env];
   }
 
   set(key: string, value: any, env?: boolean | string): this {
@@ -51,40 +82,15 @@ export abstract class ConfigBase implements Config {
     if (env === false) {
       _env = '';
     } else if (typeof env === 'string') {
-      // validate extends
-      if (env.indexOf(':') !== -1) {
-        // validate if value is object
-        if (typeof value !== 'object' || value === null) {
-          throw new Error('To extends value should be object');
-        }
-        let envExtend = env.substr(env.indexOf(':') + 1);
-        let data = this.get(key, envExtend);
-        if (typeof data !== 'object' || data === null) {
-          throw new Error(`The env '${envExtend}' should be object`);
-        }
-      }
+      // validate extends prod:dev
       _env = env;
+      if (env.indexOf(':') !== -1) {
+        this.checkExtends(env, key, value);
+      }
     }
 
     if (_env) {
-      // validate values already assign
-      if (typeof this.data[key] !== 'object') {
-        if (this.data[key] !== undefined) {
-          throw new Error('Not allow assign to value initialized how scalar');
-        }
-      } else if (this.data[key] !== null) {
-        let envs = ConfigBase.envs.filter((value, index, array) => array.indexOf(value) === index);
-        let isThrow = true;
-        for (let i = 0, length = envs.length; i < length; i++) {
-          if (envs[i] in this.data[key]) {
-            isThrow = false;
-          }
-        }
-        if (isThrow) {
-          throw new Error('Not allow assign to value initialized how object');
-        }
-      }
-
+      this.validateDataAlreadyAssign(key);
       this.data[key] = this.data[key] || {};
       this.data[key][_env] = value;
       ConfigBase.envs.push(_env);
@@ -93,6 +99,42 @@ export abstract class ConfigBase implements Config {
 
     this.data[key] = value;
     return this;
+  }
+
+  protected validateDataAlreadyAssign(key: string) {
+    // validate values already assign
+    if (typeof this.data[key] !== 'object') {
+      if (this.data[key] !== undefined) {
+        throw new Error('Not allow assign to value initialized how scalar');
+      }
+    } else if (this.data[key] !== null) {
+      let envs = ConfigBase.envs.filter((value, index, array) => array.indexOf(value) === index);
+      let isThrow = true;
+      for (let i = 0, length = envs.length; i < length; i++) {
+        if (envs[i] in this.data[key]) {
+          isThrow = false;
+        }
+      }
+      if (isThrow) {
+        throw new Error('Not allow assign to value initialized how object');
+      }
+    }
+  }
+
+  protected checkExtends(env: string, key: string, value: any) {
+    // validate if value is object
+    if (typeof value !== 'object' || value === null) {
+      throw new Error('To extends value should be object');
+    }
+    let envExtend = env.substr(env.indexOf(':') + 1);
+    let data = this.get(key, envExtend);
+    if (typeof data !== 'object' || data === null) {
+      throw new Error(`The env '${envExtend}' should be object`);
+    }
+    env = env.substr(0, env.indexOf(':'));
+
+    // assign key extends ex my-key extends dev:dev1
+    this.setKeyEnvExtend(key, env, envExtend);
   }
 
   get(key: string, env?: boolean | string): any {
@@ -109,60 +151,62 @@ export abstract class ConfigBase implements Config {
 
     // env assign in arg
     if (typeof env === 'string') {
-      return this.getResult(result, env);
+      return this.getResult(result, key, env);
     }
 
     // catch env global
     if (result[this.env] !== undefined) {
-      return this.getResult(result, this.env);
+      return this.getResult(result, key, this.env);
     }
 
     return result;
   }
 
-  protected getResult(result: any, env: string) {
+  protected getResult(result: any, key: string, env: string) {
 
-    let keyExtends = [env, ':'].join('');
-    let envExtend: string | void;
-
-    Object.keys(result).forEach((keyEnv: any) => {
-      if (keyEnv.indexOf(keyExtends) === 0) {
-        env = keyEnv;
-        envExtend = keyEnv.split(':')[1];
-      }
-    });
+    let envExtend = this.getKeyEnvExtend(key, env);
 
     if (!envExtend) {
-      envExtend = this.getEnvExtends(env);
-  }
+      envExtend = this.getEnvExtend(env);
+    }
 
     // not extends
     if (!envExtend) {
       return result[env] !== undefined ? result[env] : null;
     }
 
+    let lastResult = result[env];
+    if (!lastResult) {
+      lastResult = result[[ env, ':', envExtend ].join('')];
+    }
+
     let argumentsAssign = [
       {}
     ];
-    this.orderEnvExtends(result, envExtend, argumentsAssign);
-    argumentsAssign.push(result[env]);
+
+    this.orderEnvExtends(result, key, envExtend, argumentsAssign);
+    argumentsAssign.push(lastResult);
 
     return Object.assign.apply(null, argumentsAssign);
   }
 
-  protected orderEnvExtends(result: any, envExtend: string, argumentsApply: Array<any>) {
-    if (result[envExtend]) {
-      argumentsApply.unshift(result[envExtend]);
+  protected orderEnvExtends(result: any, key: string, env: string, argumentsApply: Array<any>) {
+    if (result[env]) {
+      argumentsApply.unshift(result[env]);
       return;
     }
 
-    let keyExtend = [envExtend, ':'].join('');
-    Object.keys(result).forEach((env: any) => {
-      if (env.indexOf(envExtend) === 0) {
-        argumentsApply.unshift(result[env]);
-        this.orderEnvExtends(result, env.substr(keyExtend.length), argumentsApply);
-      }
-    });
+    let envExtend = this.getKeyEnvExtend(key, env);
+
+    if (!envExtend) {
+      envExtend = this.getEnvExtend(env);
+    }
+
+    if (envExtend) {
+      let envConcat = [ env, ':', envExtend].join('');
+      argumentsApply.unshift(result[envConcat]);
+      this.orderEnvExtends(result, key, envExtend, argumentsApply);
+    }
   }
 
   getAll(): any {
