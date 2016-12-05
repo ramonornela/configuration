@@ -125,10 +125,11 @@ export abstract class ConfigBase implements Config {
       throw new Error('To extends value should be object');
     }
     let envExtend = env.substr(env.indexOf(':') + 1);
-    let data = this.data[key][envExtend];
+    let data = this.get(key, envExtend);
     if (typeof data !== 'object' || data === null) {
       throw new Error(`The env '${envExtend}' should be object`);
     }
+
     env = env.substr(0, env.indexOf(':'));
 
     // assign key extends ex my-key extends dev:dev1
