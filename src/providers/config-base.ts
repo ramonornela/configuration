@@ -153,11 +153,13 @@ export abstract class ConfigBase implements Config {
       return this.getResult(result, key, env);
     }
 
-    if (!this.env) {
-      return result;
+    let resultExtends = this.getResult(result, key, this.env);
+
+    if (resultExtends) {
+      return resultExtends;
     }
 
-    return this.getResult(result, key, this.env);
+    return result;
   }
 
   protected getResult(result: any, key: string, env: string) {
