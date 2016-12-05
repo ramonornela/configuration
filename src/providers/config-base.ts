@@ -152,12 +152,11 @@ export abstract class ConfigBase implements Config {
       return this.getResult(result, key, env);
     }
 
-    // catch env global
-    if (result[this.env] !== undefined) {
-      return this.getResult(result, key, this.env);
+    if (!this.env) {
+      return result;
     }
 
-    return result;
+    return this.getResult(result, key, this.env);
   }
 
   protected getResult(result: any, key: string, env: string) {
