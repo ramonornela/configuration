@@ -11,7 +11,7 @@
     "build:esm": "ngc -p tsconfig-esm.json",
     "build:test": "ngc -p tsconfig-test.json",
     "build:umd": "ngc",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "commit": "git-cz",
     "clean": "rimraf ./dist",
     "cover": "nyc report --reporter=lcov npm test",
