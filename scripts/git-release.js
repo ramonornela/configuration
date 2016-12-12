@@ -12,8 +12,9 @@ var github = new GithubApi({
 
 github.authenticate({
   type: 'oauth',
-  token: token || process.env.GIT_TOKEN
+  token: token || process.env.GH_TOKEN
 });
+
 
 return changelog({
   preset: 'angular'
@@ -22,6 +23,7 @@ return changelog({
   github.releases.createRelease({
     owner: 'ramonornela',
     repo: 'configuration',
+    target_commitish: 'master',
     tag_name: 'v' + packageJSON.version,
     name: packageJSON.version,
     body: file.toString(),

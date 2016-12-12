@@ -47,7 +47,7 @@
     "conventional-changelog-cli": "^1.2.0",
     "cz-conventional-changelog": "^1.2.0",
     "fluid-publish": "1.1.0",
-    "github": "7.0.1",
+    "github": "0.2.4",
     "husky": "^0.11.9",
     "jasmine": "2.5.2",
     "nyc": "10.0.0",
