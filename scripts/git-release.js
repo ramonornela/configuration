@@ -27,7 +27,7 @@ return changelog({
     tag_name: 'v' + packageJSON.version,
     name: packageJSON.version,
     body: file.toString(),
-    prerelease: true
+    prerelease: false
   }, function(err, data) {
     if (err) console.log('error: ' + err);
     console.log(data);
