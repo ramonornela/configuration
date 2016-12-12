@@ -1,3 +1,26 @@
+<a name="0.0.13"></a>
+## [0.0.13](https://github.com/ramonornela/configuration/compare/v0.0.12...v0.0.13) (2016-12-12)
+
+
+### Bug Fixes
+
+* **config:** get global env with extends ([d22a7f8](https://github.com/ramonornela/configuration/commit/d22a7f8))
+* **config:** global env extends ([a1d8e73](https://github.com/ramonornela/configuration/commit/a1d8e73))
+* **config:** revert commit 12a89b234bba99 ([c1fe48d](https://github.com/ramonornela/configuration/commit/c1fe48d))
+
+
+### Features
+
+* **config:** allow extends configuration of envs (ex: prod:dev) ([55eb833](https://github.com/ramonornela/configuration/commit/55eb833))
+* **config:** allow extends env by key(identifier) ([840f427](https://github.com/ramonornela/configuration/commit/840f427))
+
+
+### Performance Improvements
+
+* **config:** checkExtends not call get() ([12a89b2](https://github.com/ramonornela/configuration/commit/12a89b2))
+
+
+
 <a name="0.0.12"></a>
 ## [0.0.12](https://github.com/ramonornela/configuration/compare/v0.0.11...v0.0.12) (2016-11-30)
 
