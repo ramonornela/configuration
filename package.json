@@ -16,6 +16,7 @@
     "clean": "rimraf ./dist",
     "cover": "nyc report --reporter=lcov npm test",
     "doc": "typedoc --tsconfig tsconfig-esm.json --options typedoc.json src/",
+    "gh:release": "node ./scripts/git-release",
     "jasmine": "jasmine JASMINE_CONFIG_PATH=test/jasmine-config.json",
     "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json",
     "nightly": "npm run build:qa && node ./scripts/publish-nightly",
