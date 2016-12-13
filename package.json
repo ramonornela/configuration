@@ -31,16 +31,14 @@
     "README.md",
     "CHANGELOG.md"
   ],
-  "dependencies": {
-    "@angular/common": "^2.0.1",
-    "@angular/core": "^2.0.1",
-    "@angular/http": "^2.0.1",
-    "@angular/platform-browser": "^2.0.1"
-  },
   "devDependencies": {
-    "@angular/compiler": "~2.1.0",
-    "@angular/compiler-cli": "~2.1.0",
-    "@angular/platform-browser-dynamic": "~2.1.0",
+    "@angular/common": "2.2.1",
+    "@angular/core": "2.2.1",
+    "@angular/http": "2.2.1",
+    "@angular/platform-browser": "2.2.1",
+    "@angular/compiler": "2.2.1",
+    "@angular/compiler-cli": "2.2.1",
+    "@angular/platform-browser-dynamic": "2.2.1",
     "@types/jasmine": "2.2.33",
     "codelyzer": "1.0.0-beta.3",
     "commitizen": "^2.8.6",
