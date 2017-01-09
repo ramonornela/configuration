@@ -1,5 +1,5 @@
-import { ConfigBase } from '../config-base';
 import { Injectable } from '@angular/core';
+import { ConfigBase } from '../config-base';
 
 @Injectable()
 export class ObjectData extends ConfigBase {

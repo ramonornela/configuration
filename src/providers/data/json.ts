@@ -1,6 +1,6 @@
-import { ConfigBase } from '../config-base';
 import { Injectable } from '@angular/core';
 import { BrowserXhr } from '@angular/http';
+import { ConfigBase } from '../config-base';
 
 @Injectable()
 export class JsonData extends ConfigBase {

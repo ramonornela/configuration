@@ -1,6 +1,6 @@
-import { Config, ConfigToken, CustomLoaderToken, EnvToken, loaderFactory } from './providers';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { BrowserXhr, HttpModule } from '@angular/http';
+import { Config, ConfigToken, CustomLoaderToken, EnvToken, loaderFactory } from './providers';
 
 @NgModule({
   imports: [ HttpModule ]
