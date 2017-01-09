@@ -1,6 +1,6 @@
-import { BrowserXhr } from '@angular/http';
-import { ObjectData } from './data/object';
 import { JsonData } from './data/json';
+import { ObjectData } from './data/object';
+import { BrowserXhr } from '@angular/http';
 
 export function dataFactory(config: Object, env?: string): Object {
   return new ObjectData(config, env);

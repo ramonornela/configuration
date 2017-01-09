@@ -1,5 +1,5 @@
-import { OpaqueToken } from '@angular/core';
 import { Config } from './config';
+import { OpaqueToken } from '@angular/core';
 
 export const ConfigToken = new OpaqueToken('CONFIGTOKEN');
 export const EnvToken = new OpaqueToken('ENVTOKEN');
