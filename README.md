@@ -38,4 +38,4 @@ export class AppModule {}
 
 Contributing
 
-See [CONTRIBUTING.md](https://github.com/ramonornela/configuration/blob/master/.github/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/mbamobi/configuration/blob/master/.github/CONTRIBUTING.md)
