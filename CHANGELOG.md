@@ -1,3 +1,8 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/mbamobi/configuration/compare/v1.0.0...v2.0.0) (2017-04-04)
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/mbamobi/configuration/compare/v0.0.13...v1.0.0) (2017-01-13)
 
