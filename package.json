@@ -55,7 +55,6 @@
     "tslint": "4.3.1",
     "tslint-eslint-rules": "3.2.3",
     "tslint-ionic-rules": "0.0.8",
-    "typedoc": "^0.5.1",
     "typescript": "2.0.9",
     "zone.js": "0.7.2"
   },
