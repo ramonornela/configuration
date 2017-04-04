@@ -23,6 +23,8 @@
     "node_modules"
   ],
   "angularCompilerOptions": {
-    "strictMetadataEmit": true
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "debug": false
   }
 }
