@@ -32,13 +32,13 @@
     "CHANGELOG.md"
   ],
   "devDependencies": {
-    "@angular/common": "2.4.8",
-    "@angular/compiler": "2.4.8",
-    "@angular/compiler-cli": "2.4.8",
-    "@angular/core": "2.4.8",
-    "@angular/http": "2.4.8",
-    "@angular/platform-browser": "2.4.8",
-    "@angular/platform-browser-dynamic": "2.4.8",
+    "@angular/common": "4.0.0",
+    "@angular/compiler": "4.0.0",
+    "@angular/compiler-cli": "4.0.0",
+    "@angular/core": "4.0.0",
+    "@angular/http": "4.0.0",
+    "@angular/platform-browser": "4.0.0",
+    "@angular/platform-browser-dynamic": "4.0.0",
     "@types/jasmine": "2.2.33",
     "codelyzer": "2.0.0-beta.4",
     "commitizen": "^2.8.6",
@@ -51,16 +51,16 @@
     "nyc": "10.0.0",
     "reflect-metadata": "0.1.8",
     "rimraf": "^2.5.4",
-    "rxjs": "5.0.1",
+    "rxjs": "5.1.1",
     "tslint": "4.3.1",
     "tslint-eslint-rules": "3.2.3",
     "tslint-ionic-rules": "0.0.8",
-    "typescript": "2.0.9",
-    "zone.js": "0.7.2"
+    "typescript": "~2.2.1",
+    "zone.js": "^0.8.4"
   },
   "peerDependencies": {
-    "@angular/core": "^2.4.8",
-    "@angular/http": "^2.4.8"
+    "@angular/core": "^4.0.0",
+    "@angular/http": "^4.0.0"
   },
   "repository": {
     "type": "git",
