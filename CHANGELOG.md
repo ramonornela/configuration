@@ -3,6 +3,11 @@
 
 
 
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/mbamobi/configuration/compare/v2.0.0...v3.0.0) (2017-04-07)
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/mbamobi/configuration/compare/v1.0.0...v2.0.0) (2017-04-04)
 
