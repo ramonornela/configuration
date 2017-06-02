@@ -59,8 +59,8 @@
     "zone.js": "^0.8.4"
   },
   "peerDependencies": {
-    "@angular/core": "^4.0.0",
-    "@angular/http": "^4.0.0"
+    "@angular/core": "^4.1.0",
+    "@angular/http": "^4.1.0"
   },
   "repository": {
     "type": "git",
