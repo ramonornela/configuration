@@ -55,7 +55,7 @@
     "tslint": "4.3.1",
     "tslint-eslint-rules": "3.2.3",
     "tslint-ionic-rules": "0.0.8",
-    "typescript": "~2.2.1",
+    "typescript": "^2.3.4",
     "zone.js": "^0.8.4"
   },
   "peerDependencies": {
