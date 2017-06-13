@@ -1,27 +1,11 @@
 {
+  "extends": "./tsconfig",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
     "module": "es2015",
-    "target": "es5",
-    "experimentalDecorators": true,
-    "sourceMap": true,
-    "declaration": true,
-    "removeComments": true,
-    "outDir": "dist/esm",
-    "moduleResolution": "node",
-    "lib": [
-      "es2015",
-      "dom"
-    ]
+    "outDir": "dist/esm"
   },
-  "include": [
-    "src/index.ts"
-  ],
   "angularCompilerOptions": {
-    "strictMetadataEmit": true,
-    "genDir": "dist/esm",
+    "strictMetadataEmit": false,
     "skipTemplateCodegen": true,
     "debug": false
   }
