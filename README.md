@@ -26,7 +26,7 @@ export const APP_CONFIG = {
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    ConfigurationModule.initialize(APP_CONFIG, 'dev')
+    ConfigurationModule.forRoot(APP_CONFIG, 'dev')
   ],
   bootstrap: [IonicApp],
   entryComponents: [

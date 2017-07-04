@@ -6,7 +6,7 @@ import { Config, ConfigToken, CustomLoaderToken, EnvToken, loaderFactory } from 
   imports: [ HttpModule ]
 })
 export class ConfigurationModule {
-  static initialize(configs: any, env?: string, customLoader?: Function): ModuleWithProviders {
+  static forRoot(configs: any, env?: string, customLoader?: Function): ModuleWithProviders {
     return {
       ngModule: ConfigurationModule,
       providers: [
