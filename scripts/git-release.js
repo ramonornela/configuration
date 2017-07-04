@@ -18,7 +18,7 @@ github.authenticate({
 });
 
 github.releases.createRelease({
-  owner: 'mbamobi',
+  owner: 'ramonornela',
   repo: packageJSON.name.split('/')[1],
   target_commitish: 'master',
   tag_name: 'v' + packageJSON.version,
