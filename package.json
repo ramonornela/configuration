@@ -1,5 +1,5 @@
 {
-  "name": "@mbamobi/configuration",
+  "name": "@ramonornela/configuration",
   "version": "3.0.0",
   "description": "Manager configuration project in file json, database or static object",
   "main": "dist/umd/index.js",
@@ -32,15 +32,15 @@
     "CHANGELOG.md"
   ],
   "devDependencies": {
-    "@angular/common": "4.1.2",
-    "@angular/compiler": "4.1.2",
-    "@angular/compiler-cli": "4.1.2",
-    "@angular/core": "4.1.2",
-    "@angular/http": "4.1.2",
-    "@angular/platform-browser": "4.1.2",
-    "@angular/platform-browser-dynamic": "4.1.2",
+    "@angular/common": "4.2.5",
+    "@angular/compiler": "4.2.5",
+    "@angular/compiler-cli": "4.2.5",
+    "@angular/core": "4.2.5",
+    "@angular/http": "4.2.5",
+    "@angular/platform-browser": "4.2.5",
+    "@angular/platform-browser-dynamic": "4.2.5",
     "@types/jasmine": "2.2.33",
-    "codelyzer": "2.0.0-beta.4",
+    "codelyzer": "3.0.1",
     "commitizen": "^2.8.6",
     "conventional-changelog-cli": "^1.2.0",
     "cz-conventional-changelog": "^1.2.0",
@@ -52,9 +52,9 @@
     "reflect-metadata": "0.1.8",
     "rimraf": "^2.5.4",
     "rxjs": "5.1.1",
-    "tslint": "4.3.1",
-    "tslint-eslint-rules": "3.2.3",
-    "tslint-ionic-rules": "0.0.8",
+    "tslint": "^5.2.0",
+    "tslint-eslint-rules": "4.0.0",
+    "tslint-ionic-rules": "0.0.11",
     "typescript": "^2.3.4",
     "zone.js": "^0.8.4"
   },
@@ -64,7 +64,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mbamobi/configuration.git"
+    "url": "git+https://github.com/ramonornela/configuration.git"
   },
   "keywords": [
     "ionic",
@@ -80,7 +80,7 @@
   "author": "Ramon Ornelas <ramon.ornela@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mbamobi/configuration/issues"
+    "url": "https://github.com/ramonornela/configuration/issues"
   },
-  "homepage": "https://github.com/mbamobi/configuration"
+  "homepage": "https://github.com/ramonornela/configuration"
 }
