@@ -9,6 +9,7 @@
     "sourceMap": true,
     "declaration": true,
     "removeComments": true,
+    "skipLibCheck": true,
     "outDir": "dist/umd",
     "moduleResolution": "node",
     "lib": [
