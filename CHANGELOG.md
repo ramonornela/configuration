@@ -1,33 +1,3 @@
-<a name="3.0.0"></a>
-# [3.0.0](https://github.com/mbamobi/configuration/compare/v2.0.0...v3.0.0) (2017-04-07)
-
-
-
-<a name="3.0.0"></a>
-# [3.0.0](https://github.com/mbamobi/configuration/compare/v2.0.0...v3.0.0) (2017-04-07)
-
-
-
-<a name="2.0.0"></a>
-# [2.0.0](https://github.com/mbamobi/configuration/compare/v1.0.0...v2.0.0) (2017-04-04)
-
-
-
-<a name="2.0.0"></a>
-# [2.0.0](https://github.com/mbamobi/configuration/compare/v1.0.0...v2.0.0) (2017-04-04)
-
-
-
-<a name="1.0.0"></a>
-# [1.0.0](https://github.com/mbamobi/configuration/compare/v0.0.13...v1.0.0) (2017-01-13)
-
-
-
-<a name="1.0.0"></a>
-# [1.0.0](https://github.com/mbamobi/configuration/compare/v0.0.13...v1.0.0) (2017-01-13)
-
-
-
 <a name="0.0.13"></a>
 ## [0.0.13](https://github.com/ramonornela/configuration/compare/v0.0.12...v0.0.13) (2016-12-12)
 
